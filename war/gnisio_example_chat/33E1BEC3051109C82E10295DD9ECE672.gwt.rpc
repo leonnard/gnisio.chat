@@ -1,0 +1,10 @@
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, 1, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, 2, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, 3, 4254043109
+java.lang.Exception, true, false, true, false, 4, 1920171873
+java.lang.IllegalArgumentException, true, true, false, false, 5, 1755012560
+java.lang.NumberFormatException, true, true, false, false, 6, 3305228476
+java.lang.RuntimeException, true, false, true, false, 7, 515124647
+java.lang.String, true, true, true, true, 8, 2004016611
+java.lang.Throwable, true, false, true, false, 9, 2953622131
+net.gnisio.example.chat.client.GreetingService, false, false, false, false, _, 3376840549
