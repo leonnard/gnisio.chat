@@ -25,7 +25,17 @@ public class GreetingServiceImpl extends AbstractRemoteService implements
 		
 		pushEvent(PushEvent.TEST_EVENT, "Yahooo!!! It works!", "/");
 		
-		return "Hello, " + input + "!<br><br>I am running ";
+		Integer count = getSession().get("count");
+		if(count == null) {
+			getSession().put("count", 0);
+			count = 0;
+		}
+		else {
+			count++;
+			getSession().put("count", count);
+		}
+		
+		return "Hello, " + count + "!<br><br>I am running ";
 	}
 
 	@Override
