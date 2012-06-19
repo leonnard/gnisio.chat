@@ -13,6 +13,7 @@ import net.gnisio.client.event.SIOReconnectedEvent.SIOReconnectedHandler;
 import net.gnisio.client.event.SIOReconnectingEvent;
 import net.gnisio.client.event.SIOReconnectingEvent.SIOReconnectingHandler;
 import net.gnisio.client.wrapper.SocketIOClient;
+import net.gnisio.example.chat.client.GreetingService.PushEvent;
 import net.gnisio.example.chat.shared.FieldVerifier;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -22,6 +23,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -50,11 +52,22 @@ public class Gnisio_example_chat implements EntryPoint, SIOConnectedHandler,
 	 */
 	private final GreetingServiceAsync greetingService = GWT
 			.create(GreetingService.class);
-
+	
 	/**
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		greetingService.handleEvent(PushEvent.TEST_EVENT, new AsyncCallback<String>() {
+			@Override
+			public void onFailure(Throwable caught) {	
+			}
+
+			@Override
+			public void onSuccess(String result) {
+				Window.alert(result);
+			}
+		});
+		
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
 		nameField.setText("GWT User");
@@ -160,22 +173,6 @@ public class Gnisio_example_chat implements EntryPoint, SIOConnectedHandler,
 						});
 			}
 		}
-
-		greetingService.onMessage(null, null, new AsyncCallback<String>() {
-			@Override
-			public void onFailure(Throwable caught) {
-			}
-
-			@Override
-			public void onSuccess(String result) {
-				dialogBox.setText("PUSHED message");
-				serverResponseLabel
-						.removeStyleName("serverResponseLabelError");
-				serverResponseLabel.setHTML(result);
-				dialogBox.center();
-				closeButton.setFocus(true);
-			}
-		});
 		
 		// Add listener for connection
 		SocketIOClient.getInstance().addSIOConnectedHandler(this);

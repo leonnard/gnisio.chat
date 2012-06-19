@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+lastWarOutDir=/Users/c58/Documents/workspace/gnisio-example-chat/war
 launchConfigExternalUrlPrefix=http\://localhost\:3001
 warSrcDir=war
 warSrcDirIsOutput=false

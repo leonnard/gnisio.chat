@@ -22,9 +22,8 @@ public class GreetingServiceImpl extends AbstractRemoteService implements
 			throw new IllegalArgumentException(
 					"Name must be at least 4 characters long");
 		}
-
-		// Publish message for allconnected users
-		onMessage(input, "/");
+		
+		pushEvent(PushEvent.TEST_EVENT, "Yahooo!!! It works!", "/");
 		
 		return "Hello, " + input + "!<br><br>I am running ";
 	}
@@ -38,10 +37,5 @@ public class GreetingServiceImpl extends AbstractRemoteService implements
 	public void onClientDisconnected() {
 		removeSubscriber();
 	}
-
-	@Override
-	public String onMessage(String message, String node) {
-		publishMessage( getMethod("onMessage", String.class), message, node);
-		return null;
-	}
+	
 }

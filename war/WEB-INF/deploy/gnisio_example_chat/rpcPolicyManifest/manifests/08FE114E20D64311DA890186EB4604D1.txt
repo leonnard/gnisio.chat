@@ -1,0 +1,2 @@
+serviceClass: net.gnisio.example.chat.client.GreetingService
+path: 33E1BEC3051109C82E10295DD9ECE672.gwt.rpc
