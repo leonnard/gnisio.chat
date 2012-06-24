@@ -12,7 +12,9 @@ public class ExampleChat extends AbstractGnisioServer {
 
 	public static void main(String[] args) {
 		try {
-			new ExampleChat().start(3001);
+			ExampleChat chat = new ExampleChat();
+			chat.setSSLEnabled("nkeystore.jks", "testpass");
+			chat.start(3001);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

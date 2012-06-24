@@ -1,10 +1,10 @@
 package net.gnisio.example.chat.client;
 
-import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-
 import net.gnisio.client.wrapper.PushClass;
 import net.gnisio.shared.PushEventType;
 import net.gnisio.shared.SocketIOService;
+
+import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 /**
  * The client side stub for the RPC service.
